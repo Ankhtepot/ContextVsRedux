@@ -1,12 +1,14 @@
 import React from 'react';
-import './App.css';
-import {mergeStyleSets} from "@fluentui/react";
+import {Stack, StackItem, mergeStyleSets, PrimaryButton} from "@fluentui/react";
 import TodosList from "./components/TodosList";
 import {useColorsContext} from "./store/ColorsContext";
+import useBoolean from "./hooks/useBoolean";
+import ColorsModal from "./components/ColorsModal";
 
 
 function App() {
-    const { primaryColor, secondaryColor, textColor } = useColorsContext();
+    const {primaryColor, secondaryColor, textColor} = useColorsContext();
+    const {value: isModalOpen, setTrue: showModal, setFalse: hideModal} = useBoolean(false);
 
     const classes = mergeStyleSets({
         App: {
@@ -16,10 +18,11 @@ function App() {
             flexDirection: 'column',
             alignItems: "center",
             justifyContent: "center",
+            minHeight: "100vh",
         },
-        AppHeader: {
+        todoList: {
             minWidth: '80%',
-            minHeight: '100vh',
+            minHeight: '50vh',
             display: 'flex',
             flexDirection: "column",
             alignItems: "center",
@@ -28,12 +31,19 @@ function App() {
             color: textColor,
             backgroundColor: secondaryColor
         },
+        buttonStyle: {
+            margin: '1rem',
+        }
     })
     return (
         <div className={classes.App}>
-            <header className={classes.AppHeader}>
-                <TodosList/>
-            </header>
+            <PrimaryButton className={classes.buttonStyle} onClick={showModal}>Set Colors</PrimaryButton>
+            <Stack className={classes.todoList} horizontalAlign={"space-evenly"}>
+                <StackItem>
+                    <TodosList/>
+                </StackItem>
+                <ColorsModal isModalOpen={isModalOpen} onDismiss={hideModal} />
+            </Stack>
         </div>
     );
 }

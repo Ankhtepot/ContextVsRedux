@@ -8,7 +8,7 @@ const classes = mergeStyleSets({
     App: {
         textAlign: 'center',
     },
-    AppHeader: {
+    todoList: {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: "column",
@@ -22,7 +22,7 @@ const classes = mergeStyleSets({
 function App() {
     return (
         <div className={classes.App}>
-            <header className={classes.AppHeader}>
+            <header className={classes.todoList}>
                 <TodosProvider>
                     <TodosList />
                 </TodosProvider>

@@ -1,7 +1,10 @@
 import React from "react";
 import {Checkbox, mergeStyleSets, Stack, StackItem} from "@fluentui/react";
+import {useColorsContext} from "../store/ColorsContext";
 
-const Todo: React.FC<Api.ITodo> = (props) => {
+const TodoItem: React.FC<Api.ITodo> = (props) => {
+    const { textColor } = useColorsContext();
+
     const classes = mergeStyleSets({
         paragraph: {
             color: 'black',
@@ -11,7 +14,7 @@ const Todo: React.FC<Api.ITodo> = (props) => {
     return (
         <Stack horizontal tokens={{childrenGap: 10}} verticalAlign={"center"}>
             <StackItem>
-                <p className={classes.paragraph}>
+                <p className={classes.paragraph} style={{ color: textColor}}>
                     {props.text}
                 </p>
             </StackItem>
@@ -22,4 +25,4 @@ const Todo: React.FC<Api.ITodo> = (props) => {
     );
 };
 
-export default Todo;
+export default TodoItem;

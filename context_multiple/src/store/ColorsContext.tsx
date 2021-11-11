@@ -1,9 +1,9 @@
 import React, {createContext, useState, FC, useContext} from "react";
 
 const contextDefaultValues: Api.ColorsContextState = {
-    primaryColor: 'red',
-    secondaryColor: 'blue',
-    textColor: 'white',
+    primaryColor: 'white',
+    secondaryColor: 'lightblue',
+    textColor: 'black',
     setSecondaryColor: () => {},
     setPrimaryColor: () => {},
     setTextColor: () => {},
@@ -21,7 +21,10 @@ const ColorsProvider: FC = ({ children }) => {
     const [secondaryColor, _setSecondaryColor] = useState<string>(contextDefaultValues.secondaryColor);
     const [textColor, _setTextColor] = useState<string>(contextDefaultValues.textColor);
 
-    const setPrimaryColor = (color: string) => _setPrimaryColor(color);
+    const setPrimaryColor = (color: string) => {
+        _setPrimaryColor(color);
+        console.log(`Setting primary color to: ${color}`);
+    };
     const setSecondaryColor = (color: string) => _setSecondaryColor(color);
     const setTextColor = (color: string) => _setTextColor(color);
 
