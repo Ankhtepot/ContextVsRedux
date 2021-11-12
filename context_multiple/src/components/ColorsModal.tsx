@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, PrimaryButton, Stack, StackItem} from "@fluentui/react";
+import {ContextualMenu, IDragOptions, mergeStyleSets, Modal, PrimaryButton, Stack, StackItem} from "@fluentui/react";
 import ColorPickerWithLabel from "./ColorPickerWithLabel";
 import {useColorsContext} from "../store/ColorsContext";
 
@@ -18,8 +18,34 @@ const ColorsModal: React.FC<ColorModalProps> = (props) => {
         setTextColor
     } = useColorsContext();
 
+    const classes = mergeStyleSets({
+        moveArea: {
+            backgroundColor: 'lightBlue',
+            color: 'black',
+            minHeight: '2rem',
+            minWidth: '100px',
+            textAlign: 'center',
+            margin: '0.5rem',
+        }
+    })
+
+    const dragOptions = React.useMemo(
+        (): IDragOptions => ({
+            moveMenuItemText: 'Move',
+            closeMenuItemText: 'Close',
+            menu: ContextualMenu,
+            keepInBounds: false,
+            dragHandleSelector: '#moveArea'
+        }),
+        [],
+    );
+
     return (
-        <Modal isOpen={props.isModalOpen} isBlocking={false} onDismiss={props.onDismiss}>
+        <Modal isOpen={props.isModalOpen}
+               isBlocking={false}
+               onDismiss={props.onDismiss}
+               dragOptions={dragOptions}
+        >
             <Stack>
                 <Stack horizontal>
                     <ColorPickerWithLabel
@@ -38,9 +64,14 @@ const ColorsModal: React.FC<ColorModalProps> = (props) => {
                         onChange={(e, color) => setTextColor(color.str)}
                     />
                 </Stack>
-                <StackItem style={{textAlign: 'right'}}>
-                    <PrimaryButton onClick={props.onDismiss} style={{ margin: '1rem'}}>Cancel</PrimaryButton>
-                </StackItem>
+                <Stack horizontal horizontalAlign='space-between'>
+                    <StackItem className={classes.moveArea} id='moveArea'>
+                        <p>MOVE</p>
+                    </StackItem>
+                    <StackItem>
+                        <PrimaryButton onClick={props.onDismiss} style={{margin: '1rem'}}>Cancel</PrimaryButton>
+                    </StackItem>
+                </Stack>
             </Stack>
         </Modal>
     );
