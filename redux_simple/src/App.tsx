@@ -1,8 +1,7 @@
 import React from 'react';
-import './App.css';
-import TodosProvider from "../../context_simple/src/store/TodosContext";
-import TodosList from "../../context_simple/src/components/TodosList";
 import {mergeStyleSets} from "@fluentui/react";
+import TodosProvider from "./store/TodosContext";
+import TodosList from "./components/TodosList";
 
 const classes = mergeStyleSets({
     App: {

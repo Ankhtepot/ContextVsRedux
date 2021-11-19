@@ -47,7 +47,7 @@ const ColorsModal: React.FC<ColorModalProps> = (props) => {
                dragOptions={dragOptions}
         >
             <Stack>
-                <Stack horizontal>
+                <Stack horizontal tokens={{ childrenGap: 10}}>
                     <ColorPickerWithLabel
                         color={primaryColor}
                         label='Primary Color'
