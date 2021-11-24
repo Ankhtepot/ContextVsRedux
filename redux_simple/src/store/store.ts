@@ -1,11 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-// ...
+import {configureStore} from '@reduxjs/toolkit';
+import counterSlice from "./counterSlice";
+import todoSlice from "./todoSlice";
+import {useAppSelector} from "../hooks/reduxHooks";
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
-        // todo: todoReducer,
+        counter: counterSlice,
+        todo: todoSlice
     },
 })
+
+export const useTodoReducer = () => useAppSelector(state => state.todo);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

@@ -1,7 +1,8 @@
 import React from 'react';
 import {mergeStyleSets} from "@fluentui/react";
-import TodosProvider from "./store/TodosContext";
 import TodosList from "./components/TodosList";
+import {Provider} from "react-redux";
+import {store} from "./store/store";
 
 const classes = mergeStyleSets({
     App: {
@@ -22,9 +23,9 @@ function App() {
     return (
         <div className={classes.App}>
             <header className={classes.todoList}>
-                <TodosProvider>
+                <Provider store={store}>
                     <TodosList />
-                </TodosProvider>
+                </Provider>
             </header>
         </div>
     );
