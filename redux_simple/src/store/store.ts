@@ -6,11 +6,11 @@ import {useAppSelector} from "../hooks/reduxHooks";
 export const store = configureStore({
     reducer: {
         counter: counterSlice,
-        todo: todoSlice
+        todos: todoSlice
     },
 })
 
-export const useTodoReducer = () => useAppSelector(state => state.todo);
+export const useTodoReducer = () => useAppSelector(state => state.todos);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

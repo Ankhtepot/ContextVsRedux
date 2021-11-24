@@ -11,7 +11,7 @@ const initialState: TodoState = {
 
 
 export const todoSlice = createSlice({
-    name: 'todo',
+    name: 'todos',
     initialState,
     reducers: {
         addTodo: (state, { payload }: PayloadAction<Api.ITodo>) => {
@@ -22,6 +22,7 @@ export const todoSlice = createSlice({
 
 export const { addTodo } = todoSlice.actions;
 
-export const todos = (state: RootState) => state.todo.todos;
+// can export just like this as simple accessor
+export const todos = (state: RootState) => state.todos.todos;
 
 export default todoSlice.reducer;
