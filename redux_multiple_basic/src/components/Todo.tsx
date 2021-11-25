@@ -1,10 +1,13 @@
 import React from "react";
 import {Checkbox, mergeStyleSets, Stack, StackItem} from "@fluentui/react";
+import {useColorsReducer} from "../store/store";
 
 const Todo: React.FC<Api.ITodo> = (props) => {
+    const { textColor } = useColorsReducer();
+
     const classes = mergeStyleSets({
         paragraph: {
-            color: 'black',
+            color: textColor,
         }
     })
 
