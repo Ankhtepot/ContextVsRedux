@@ -5,6 +5,7 @@ import useBoolean from "./hooks/useBoolean";
 import ColorsModal from "./components/ColorsModal";
 import {useColorsReducer} from "./store/store";
 import PrimaryButton from "./components/PrimaryButton";
+import AsyncSliceUI from "./components/AsyncSliceUI";
 
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
         <div className={classes.App}>
             <PrimaryButton onClick={showModal}>Set Colors</PrimaryButton>
             <Stack className={classes.todoList} horizontalAlign={"space-evenly"}>
+                <StackItem>
+                    <AsyncSliceUI />
+                </StackItem>
                 <StackItem>
                     <TodosList/>
                 </StackItem>

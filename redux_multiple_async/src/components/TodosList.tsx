@@ -18,6 +18,7 @@ const TodosList = () => {
 
     return (
         <Stack>
+            <h1>Todo:</h1>
             <PrimaryButton onClick={() => dispatch(
                 addTodo({text: 'Todo', completed: (Math.floor(Math.random() * 2) === 1)})
             )}>add todo</PrimaryButton>
