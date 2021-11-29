@@ -1,9 +1,10 @@
 import React from 'react';
-import {Stack, StackItem, mergeStyleSets, PrimaryButton} from "@fluentui/react";
+import {Stack, StackItem, mergeStyleSets} from "@fluentui/react";
 import TodosList from "./components/TodosList";
 import useBoolean from "./hooks/useBoolean";
 import ColorsModal from "./components/ColorsModal";
 import {useColorsReducer} from "./store/store";
+import PrimaryButton from "./components/PrimaryButton";
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
     })
     return (
         <div className={classes.App}>
-            <PrimaryButton className={classes.buttonStyle} onClick={showModal}>Set Colors</PrimaryButton>
+            <PrimaryButton onClick={showModal}>Set Colors</PrimaryButton>
             <Stack className={classes.todoList} horizontalAlign={"space-evenly"}>
                 <StackItem>
                     <TodosList/>

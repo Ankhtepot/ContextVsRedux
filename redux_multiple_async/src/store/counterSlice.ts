@@ -7,7 +7,7 @@ interface CounterState {
 }
 
 // Define the initial state using that type
-const initialState: CounterState = {
+const initialState = {
     value: 0,
 } as CounterState;
 // In some cases, TypeScript may unnecessarily tighten the type of the initial state. If that happens, you can work

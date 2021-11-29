@@ -1,9 +1,10 @@
 import React from 'react';
-import {ContextualMenu, IDragOptions, mergeStyleSets, Modal, PrimaryButton, Stack, StackItem} from "@fluentui/react";
+import {ContextualMenu, IDragOptions, mergeStyleSets, Modal, Stack, StackItem} from "@fluentui/react";
 import ColorPickerWithLabel from "./ColorPickerWithLabel";
 import {useColorsReducer} from "../store/store";
 import {useAppDispatch} from "../hooks/reduxHooks";
 import {setPrimaryColor, setSecondaryColor, setTextColor} from "../store/colorsSlice";
+import PrimaryButton from "./PrimaryButton";
 
 interface ColorModalProps {
     isModalOpen: boolean;
@@ -69,7 +70,7 @@ const ColorsModal: React.FC<ColorModalProps> = (props) => {
                         <p>MOVE</p>
                     </StackItem>
                     <StackItem>
-                        <PrimaryButton onClick={props.onDismiss} style={{margin: '1rem'}}>Cancel</PrimaryButton>
+                        <PrimaryButton onClick={props.onDismiss}>Cancel</PrimaryButton>
                     </StackItem>
                 </Stack>
             </Stack>
